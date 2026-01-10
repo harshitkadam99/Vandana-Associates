@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vandana Associates | Electrical & Solar Solutions</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 </head>
 <body>
 
@@ -55,24 +57,95 @@
 </section>
 
 <!-- SERVICES -->
+<!-- SERVICES -->
 <section id="services" class="section light-bg">
     <div class="container">
         <h2>Our Services</h2>
-        <div class="services-grid">
-            <div class="service-card">Rooftop Solar System</div>
-            <div class="service-card">Solar Power System</div>
-            <div class="service-card">Electrification Service</div>
-            <div class="service-card">Electrical Transformer</div>
-            <div class="service-card">Galvanized Iron Structure</div>
-            <div class="service-card">Steel Structure</div>
-            <div class="service-card">Diagnostic Equipment</div>
-            <div class="service-card">Other Electrical Products</div>
+
+        <!-- RADIO BUTTONS -->
+        <input type="radio" name="service" id="s1" checked>
+        <input type="radio" name="service" id="s2">
+        <input type="radio" name="service" id="s3">
+        <input type="radio" name="service" id="s4">
+        <input type="radio" name="service" id="s5">
+
+        <!-- SERVICE BUTTONS -->
+        <div class="service-buttons">
+            <label for="s1"><i class="fa-solid fa-solar-panel"></i> Rooftop Solar</label>
+            <label for="s2"><i class="fa-solid fa-sun"></i> Solar Power System</label>
+            <label for="s3"><i class="fa-solid fa-bolt"></i> Electrification</label>
+            <label for="s4"><i class="fa-solid fa-industry"></i> Transformer</label>
+            <label for="s5"><i class="fa-solid fa-building"></i> Steel & GI Structure</label>
+        </div>
+
+        <!-- SERVICE CONTENT -->
+        <div class="service-display">
+
+            <div class="service-box s1">
+                <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276">
+                <div>
+                    <h3>Rooftop Solar System</h3>
+                    <p>
+                        Complete rooftop solar installation solutions for residential,
+                        commercial, and industrial buildings ensuring high efficiency,
+                        safety, and long-term performance.
+                    </p>
+                </div>
+            </div>
+
+            <div class="service-box s2">
+                <img src="https://i0.wp.com/www.orbenergy.com/wp-content/uploads/2023/11/Hero.webp">
+                <div>
+                    <h3>Solar Power System</h3>
+                    <p>
+                        End-to-end solar power systems including design, installation,
+                        commissioning, and maintenance for maximum energy output.
+                    </p>
+                </div>
+            </div>
+
+            <div class="service-box s3">
+                <img src="https://images.unsplash.com/photo-1581091012184-5c7c69b4b4b1">
+                <div>
+                    <h3>Electrification Service</h3>
+                    <p>
+                        Industrial and residential electrification services following
+                        strict safety standards and quality workmanship.
+                    </p>
+                </div>
+            </div>
+
+            <div class="service-box s4">
+                <img src="https://images.unsplash.com/photo-1624397640148-949b1732bbf3">
+                <div>
+                    <h3>Electrical Transformer</h3>
+                    <p>
+                        Installation, testing, and maintenance of electrical transformers
+                        for safe and reliable power distribution.
+                    </p>
+                </div>
+            </div>
+
+            <div class="service-box s5">
+                <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae">
+                <div>
+                    <h3>Steel & GI Structure</h3>
+                    <p>
+                        Fabrication and installation of durable steel and GI structures
+                        for solar and electrical infrastructure projects.
+                    </p>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
 
+
+
+
 <!-- GALLERY -->
-<section id="gallery" class="section">
+<!-- <section id="gallery" class="section">
     <div class="container">
         <h2>Our Work & Team</h2>
         <p class="center-text">Project sites, installations, and office staff</p>
@@ -85,7 +158,7 @@
             <div class="gallery-item">Add Image</div>
         </div>
     </div>
-</section>
+</section> -->
 
 <!-- CONTACT -->
 <section id="contact" class="section light-bg">
@@ -99,12 +172,14 @@
                 <p><strong>Working Hours:</strong> Mon – Sat | 9 AM – 6 PM</p>
             </div>
 
-            <form>
-                <input type="text" placeholder="Your Name" required>
-                <input type="tel" placeholder="Phone Number" required>
-                <textarea placeholder="Your Message" required></textarea>
+           <form id="contactForm">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <input type="tel" name="phone" placeholder="Phone Number" required>
+                <textarea name="message" placeholder="Your Message" required></textarea>
                 <button type="submit">Send Message</button>
             </form>
+
         </div>
     </div>
 </section>
@@ -114,6 +189,13 @@
     <p>© 2026 Vandana Associates. All Rights Reserved.</p>
 </footer>
 
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<!-- Your normal JS files -->
 <script src="script.js"></script>
+<script src="email.js"></script>
+
+
 </body>
 </html>

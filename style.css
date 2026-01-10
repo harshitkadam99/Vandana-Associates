@@ -141,6 +141,7 @@ nav a {
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
+
 /* GALLERY */
 .center-text {
     text-align: center;
@@ -200,5 +201,226 @@ footer {
     }
     .hero-content h2 {
         font-size: 36px;
+    }
+}
+
+
+
+
+/* ===== SERVICES TABS (NEW) ===== */
+
+/* HIDE RADIO */
+#services input {
+    display: none;
+}
+
+/* BUTTONS ON TOP */
+.service-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.service-buttons label {
+    padding: 12px 22px;
+    border: 2px solid #0b3c5d;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #0b3c5d;
+    transition: all 0.3s ease;
+}
+
+/* HOVER */
+.service-buttons label:hover {
+    background: #0b3c5d;
+    color: white;
+}
+
+/* ACTIVE BUTTON */
+#s1:checked ~ .service-buttons label[for="s1"],
+#s2:checked ~ .service-buttons label[for="s2"],
+#s3:checked ~ .service-buttons label[for="s3"],
+#s4:checked ~ .service-buttons label[for="s4"],
+#s5:checked ~ .service-buttons label[for="s5"] {
+    background: #0b3c5d;
+    color: white;
+}
+
+/* CONTENT AREA */
+.service-display {
+    margin-top: 40px;
+}
+
+/* SERVICE BOX */
+.service-box {
+    display: none;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: center;
+    animation: fadeUp 0.5s ease;
+}
+
+.service-box img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* SHOW BASED ON CLICK */
+#s1:checked ~ .service-display .s1,
+#s2:checked ~ .service-display .s2,
+#s3:checked ~ .service-display .s3,
+#s4:checked ~ .service-display .s4,
+#s5:checked ~ .service-display .s5 {
+    display: grid;
+}
+
+/* ANIMATION */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .service-box {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}
+
+
+
+
+
+
+
+
+/* ===== SERVICES ICONS & ANIMATIONS ===== */
+
+#services input {
+    display: none;
+}
+
+/* BUTTONS */
+.service-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.service-buttons label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    border: 2px solid #0b3c5d;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #0b3c5d;
+    background: white;
+    transition: all 0.35s ease;
+}
+
+/* ICON STYLE */
+.service-buttons i {
+    font-size: 18px;
+}
+
+/* HOVER ANIMATION */
+.service-buttons label:hover {
+    background: #0b3c5d;
+    color: white;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(11, 60, 93, 0.3);
+}
+
+/* ACTIVE */
+#s1:checked ~ .service-buttons label[for="s1"],
+#s2:checked ~ .service-buttons label[for="s2"],
+#s3:checked ~ .service-buttons label[for="s3"],
+#s4:checked ~ .service-buttons label[for="s4"],
+#s5:checked ~ .service-buttons label[for="s5"] {
+    background: #0b3c5d;
+    color: white;
+}
+
+/* CONTENT AREA */
+.service-display {
+    margin-top: 40px;
+}
+
+/* SERVICE BOX */
+.service-box {
+    display: none;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: center;
+    animation: contentFade 0.6s ease;
+}
+
+.service-box img {
+    width: 100%;
+    border-radius: 12px;
+    animation: imageSlide 0.8s ease;
+}
+
+.service-box h3 {
+    color: #0b3c5d;
+    margin-bottom: 10px;
+}
+
+/* SHOW CONTENT */
+#s1:checked ~ .service-display .s1,
+#s2:checked ~ .service-display .s2,
+#s3:checked ~ .service-display .s3,
+#s4:checked ~ .service-display .s4,
+#s5:checked ~ .service-display .s5 {
+    display: grid;
+}
+
+/* ANIMATIONS */
+@keyframes contentFade {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes imageSlide {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .service-box {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .service-box img {
+        animation: none;
     }
 }
