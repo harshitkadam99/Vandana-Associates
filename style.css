@@ -183,6 +183,8 @@ form button {
     border: none;
 }
 
+
+
 /* FOOTER */
 footer {
     background: #0b3c5d;
@@ -422,5 +424,89 @@ footer {
 
     .service-box img {
         animation: none;
+    }
+}
+
+
+.section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #0b3c5d;
+}
+
+/* ================= TEAM SECTION ================= */
+.team-section {
+    position: relative;
+    background: url("https://plus.unsplash.com/premium_photo-1683120730432-b5ea74bd9047?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") center/cover no-repeat;
+    padding: 60px 0;
+    color: white;
+}
+
+.team-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(11, 60, 93, 0.92);
+}
+
+.team-container {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    z-index: 2;
+    align-items: center;
+}
+
+.team-text h3 {
+    font-size: 26px;
+    margin-bottom: 15px;
+}
+
+.team-text p {
+    line-height: 1.7;
+    color: #e5e5e5;
+    margin-bottom: 12px;
+}
+
+.team-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.accordion-item {
+    background: rgba(255, 255, 255, 0.08);
+    border-left: 4px solid #9acd32;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.accordion-header {
+    padding: 15px 18px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.accordion-header:hover {
+    background: rgba(154, 205, 50, 0.15);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 18px;
+    transition: 0.4s ease;
+}
+
+.accordion-item.active .accordion-content {
+    max-height: 160px;
+    padding: 12px 18px;
+}
+
+@media (max-width: 900px) {
+    .team-container {
+        grid-template-columns: 1fr;
     }
 }
