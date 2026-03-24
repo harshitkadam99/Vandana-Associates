@@ -270,24 +270,36 @@ const styles = `
 
 
   /* ── SERVICES ── */
-  .va-service-tabs { display:flex; justify-content:center; flex-wrap:wrap; gap:14px; margin-bottom:40px; }
+  .va-service-tabs { display:flex; justify-content:center; flex-wrap:wrap; gap:12px; margin-bottom:40px; }
   .va-tab-btn {
-    display:flex; align-items:center; gap:10px; padding:12px 22px;
+    display:flex; align-items:center; gap:10px; padding:11px 20px;
     border:2px solid var(--navy); border-radius:30px; cursor:pointer;
     font-weight:700; color:var(--navy); background:white;
     font-family:'Montserrat',sans-serif; font-size:13px;
     transition:all 0.3s;
   }
   .va-tab-btn:hover { background:var(--navy); color:white; transform:translateY(-3px); box-shadow:0 8px 20px rgba(11,60,93,0.25); }
-  .va-tab-btn.active { background:var(--navy); color:white; }
-  .va-tab-btn i { font-size:16px; }
+  .va-tab-btn.active { background:var(--navy); color:white; box-shadow:0 6px 18px rgba(11,60,93,0.3); }
+  .va-tab-btn .va-tab-emoji { font-size:17px; }
   .va-service-box {
-    display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;
+    display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:start;
     animation:fadeUp 0.5s ease;
   }
-  .va-service-box img { width:100%; border-radius:14px; box-shadow:0 8px 30px rgba(0,0,0,0.12); }
-  .va-service-box h3 { font-family:'Montserrat',sans-serif; color:var(--navy); margin-bottom:12px; font-size:22px; }
-  .va-service-box p { color:var(--text2); line-height:1.8; }
+  .va-service-img { width:100%; border-radius:14px; box-shadow:0 8px 30px rgba(0,0,0,0.12); aspect-ratio:4/3; object-fit:cover; }
+  .va-service-box h3 { font-family:'Montserrat',sans-serif; color:var(--navy); margin-bottom:6px; font-size:22px; }
+  .va-service-subtitle { font-size:13px; color:var(--green); font-weight:700; letter-spacing:1px; text-transform:uppercase; margin-bottom:18px; }
+  .va-service-list { list-style:none; display:flex; flex-direction:column; gap:10px; }
+  .va-service-list li {
+    display:flex; align-items:flex-start; gap:10px;
+    font-size:14px; color:var(--text2); line-height:1.5;
+    padding:9px 14px; background:white; border-radius:8px;
+    border:1px solid rgba(11,60,93,0.08);
+    transition:all 0.25s;
+  }
+  .va-service-list li:hover { border-color:var(--navy); background:rgba(11,60,93,0.03); transform:translateX(4px); }
+  .va-service-list li::before { content:'→'; color:var(--green); font-size:13px; flex-shrink:0; font-weight:800; margin-top:1px; }
+
+  @media(max-width:900px){ .va-service-box { grid-template-columns:1fr; } }
 
   /* ── TEAM ── */
   .va-team-section {
@@ -318,20 +330,7 @@ const styles = `
   }
   .va-accordion-item.open .va-accordion-body { max-height:200px; padding:14px 20px; }
 
-  /* ── WORK SLIDER ── */
-  .va-work-section { background:var(--light); }
-  .va-work-slider { overflow:hidden; margin-top:30px; position:relative; }
-  .va-work-track {
-    display:flex; gap:20px; width:max-content;
-    animation:scrollWork 28s linear infinite;
-  }
-  .va-work-track:hover { animation-play-state:paused; }
-  .va-work-card {
-    min-width:230px; height:165px; border-radius:12px; overflow:hidden;
-    box-shadow:0 6px 20px rgba(0,0,0,0.12); background:white; flex-shrink:0;
-  }
-  .va-work-card img { width:100%; height:100%; object-fit:cover; transition:transform 0.4s; }
-  .va-work-card:hover img { transform:scale(1.1); }
+
 
   /* ── CONTACT ── */
   .va-contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:50px; }
@@ -376,7 +375,6 @@ const styles = `
 
   /* ── ANIMATIONS ── */
   @keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
-  @keyframes scrollWork { from{transform:translateX(0)} to{transform:translateX(-50%)} }
   @keyframes spinRing { from{transform:rotate(0deg)} to{transform:rotate(360deg)} }
 
   /* ── MOBILE NAV ── */
@@ -417,41 +415,96 @@ const styles = `
 ───────────────────────────────────────── */
 const SLIDES = [
   "https://cdn.pixabay.com/photo/2017/01/21/19/30/current-1998106_1280.jpg",
-  "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=1400",
+  "https://i.pinimg.com/736x/39/1b/20/391b2042bd920971f89a6449730a7599.jpg",
   "https://i0.wp.com/www.orbenergy.com/wp-content/uploads/2023/11/Hero.webp",
   "https://cdn.pixabay.com/photo/2017/07/06/03/00/electrical-2476782_1280.jpg",
+  "https://i.pinimg.com/1200x/7a/64/21/7a64219d91f89d726fa456cf41e0495e.jpg",
 ];
 
 const SERVICES = [
   {
-    id: "s1", icon: "fa-solid fa-solar-panel", label: "Rooftop Solar",
-    title: "Rooftop Solar System",
+    emoji: "🔌", label: "Line Work",
+    title: "Power Distribution & Line Work",
+    img: "https://i.pinimg.com/736x/63/e1/bf/63e1bf8d52269aaadbbeba79d99c2432.jpg",
+    items: [
+      "LT Line Installation & Maintenance",
+      "HT Line Installation & Maintenance",
+      "Overhead Line Work",
+      "Underground Cable Laying",
+      "Pole Installation & Shifting",
+      "Feeder Line Work",
+      "Load Extension & Line Upgradation",
+    ],
+  },
+  {
+    emoji: "⚡", label: "Transformer",
+    title: "Transformer & Substation Work",
+    img: "https://i.pinimg.com/736x/fb/1e/4d/fb1e4d3e3478c4c28710cd448d91cf9e.jpg",
+    items: [
+      "Transformer Installation (All Capacities)",
+      "Transformer Shifting & Erection",
+      "Transformer Maintenance & Testing",
+      "Oil Filtration & Testing",
+      "Substation Installation (Indoor / Outdoor)",
+      "Panel Board Installation",
+    ],
+  },
+  {
+    emoji: "🏠", label: "Electrification",
+    title: "Wiring & Electrification",
+    img: "https://i.pinimg.com/736x/7c/0f/63/7c0f63e3f0b09c04c364991d9475d64d.jpg",
+    items: [
+      "Internal Wiring (Concealed / Open Wiring)",
+      "House Wiring & Rewiring",
+      "Society / Township Full Electrification",
+      "Office & Commercial Wiring",
+      "Industrial Wiring",
+    ],
+  },
+  {
+    emoji: "☀️", label: "Solar",
+    title: "Solar Services",
     img: "https://images.unsplash.com/photo-1509391366360-2e959784a276?auto=format&fit=crop&w=800",
-    desc: "Complete rooftop solar installation solutions for residential, commercial, and industrial buildings ensuring high efficiency, safety, and long-term performance.",
+    items: [
+      "Solar Panel Installation (Residential & Commercial)",
+      "Solar Inverter Setup",
+      "Net Metering Support",
+      "Solar Plant Maintenance",
+      "Hybrid & Off-grid Systems",
+    ],
   },
   {
-    id: "s2", icon: "fa-solid fa-sun", label: "Solar Power",
-    title: "Solar Power System",
-    img: "https://i0.wp.com/www.orbenergy.com/wp-content/uploads/2023/11/Hero.webp",
-    desc: "End-to-end solar power systems including design, installation, commissioning, and maintenance for maximum energy output.",
+    emoji: "💡", label: "Lighting",
+    title: "Lighting & Decorative Work",
+    img: "https://i.pinimg.com/1200x/94/98/19/9498192b2223030ab7ece5fcdad124f2.jpg",
+    items: [
+      "Street Light Installation",
+      "Decorative Outdoor Poles & Lighting",
+      "Garden & Landscape Lighting",
+      "Architectural / Facade Lighting",
+      "Festival & Event Lighting",
+    ],
   },
   {
-    id: "s3", icon: "fa-solid fa-bolt", label: "Electrification",
-    title: "Electrification Service",
-    img: "https://images.unsplash.com/photo-1581091012184-5c7c69b4b4b1?auto=format&fit=crop&w=800",
-    desc: "Industrial and residential electrification services following strict safety standards and quality workmanship.",
+    emoji: "🔧", label: "Maintenance",
+    title: "Maintenance & Repair Services",
+    img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800",
+    items: [
+      "Electrical Maintenance (AMC)",
+      "Fault Detection & Troubleshooting",
+      "Panel Repair & Servicing",
+    ],
   },
   {
-    id: "s4", icon: "fa-solid fa-industry", label: "Transformer",
-    title: "Electrical Transformer",
-    img: "https://images.unsplash.com/photo-1624397640148-949b1732bbf3?auto=format&fit=crop&w=800",
-    desc: "Installation, testing, and maintenance of electrical transformers for safe and reliable power distribution.",
-  },
-  {
-    id: "s5", icon: "fa-solid fa-building", label: "Steel & GI",
-    title: "Steel & GI Structure",
-    img: "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?auto=format&fit=crop&w=800",
-    desc: "Fabrication and installation of durable steel and GI structures for solar and electrical infrastructure projects.",
+    emoji: "🏗️", label: "Infrastructure",
+    title: "Infrastructure & Utility Services",
+    img: "https://i.pinimg.com/1200x/a0/42/16/a04216058599091312f0df88b58f54bb.jpg",
+    items: [
+      "Earthing & Lightning Protection",
+      "Feeder Pillar Installation",
+      "Meter Installation & Shifting",
+      "Load Extension Work",
+    ],
   },
 ];
 
@@ -471,20 +524,14 @@ const ACCORDION_ITEMS = [
   { title: "Structured Execution", body: "Disciplined workflows ensuring safety compliance, quality materials, and timely delivery on every project." },
 ];
 
-// Placeholder work images — replace src with your actual images
-const WORK_IMAGES = Array.from({ length: 10 }, (_, i) => ({
-  src: `https://picsum.photos/seed/va${i + 1}/400/300`,
-  alt: `Project ${i + 1}`,
-}));
-
 /* ─────────────────────────────────────────
    ✏️  EDIT THESE LINKS
    Replace # with your actual URLs
 ───────────────────────────────────────── */
 const SOCIAL_LINKS = {
-  whatsappChat:      "https://wa.me/919630190422",                   // Direct WhatsApp chat
-  whatsappCommunity: "https://chat.whatsapp.com/YOUR_COMMUNITY_LINK", // WhatsApp Community link
-  instagram:         "https://instagram.com/YOUR_INSTAGRAM_HANDLE",   // Instagram page link
+  whatsappChat:      "https://chat.whatsapp.com/DCifmd3jYi6HgPEXTNb2GA",                   // Direct WhatsApp chat
+  whatsappCommunity: "https://chat.whatsapp.com/DCifmd3jYi6HgPEXTNb2GA", // WhatsApp Community link
+  instagram:         "https://www.instagram.com/vandana_associates?igsh=MWVhYXFocDJ2ZjVjNA==",   // Instagram page link
 };
 
 // ✏️ Set to true once you add your logo image to /public/logo.png
@@ -504,12 +551,13 @@ const stepPos = [
    MAIN COMPONENT
 ───────────────────────────────────────── */
 export default function App() {
-  const [slide, setSlide]         = useState(0);
-  const [activeTab, setActiveTab] = useState(0);
-  const [openAcc, setOpenAcc]     = useState(null);
+  const [slide, setSlide]           = useState(0);
+  const [activeTab, setActiveTab]   = useState(0);
+  const [openAcc, setOpenAcc]       = useState(null);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [formData, setFormData]   = useState({ name: "", email: "", phone: "", message: "" });
-  const [submitted, setSubmitted] = useState(false);
+  const [formData, setFormData]     = useState({ name: "", email: "", phone: "", message: "" });
+  const [submitted, setSubmitted]   = useState(false);
+  const [sending, setSending]       = useState(false);
   const timerRef = useRef(null);
 
   // Auto-slide
@@ -527,9 +575,35 @@ export default function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 3500);
-    setFormData({ name: "", email: "", phone: "", message: "" });
+    setSending(true);
+
+    // EmailJS — Admin notification
+    window.emailjs.send("service_w3oub04", "template_up6wn9j", {
+      name:    formData.name,
+      email:   formData.email,
+      phone:   formData.phone,
+      message: formData.message,
+    })
+    .then(() => {
+      // EmailJS — Auto-reply to user
+      return window.emailjs.send("service_w3oub04", "template_eljfqp6", {
+        name:    formData.name,
+        email:   formData.email,
+        phone:   formData.phone,
+        message: formData.message,
+      });
+    })
+    .then(() => {
+      setSending(false);
+      setSubmitted(true);
+      setFormData({ name: "", email: "", phone: "", message: "" });
+      setTimeout(() => setSubmitted(false), 4000);
+    })
+    .catch((err) => {
+      setSending(false);
+      alert("Something went wrong. Please try again or call us directly.");
+      console.error("EmailJS error:", err);
+    });
   };
 
   return (
@@ -554,7 +628,7 @@ export default function App() {
 
           {/* NAV LINKS */}
           <nav className="va-nav">
-            {["home","about","services","team","gallery","contact"].map(s => (
+            {["home","about","services","team","contact"].map(s => (
               <a key={s} onClick={() => scrollTo(s)}>
                 {s.charAt(0).toUpperCase()+s.slice(1)}
               </a>
@@ -571,7 +645,7 @@ export default function App() {
       {/* Mobile Nav */}
       {mobileOpen && (
         <div className="va-mobile-nav" onClick={() => setMobileOpen(false)}>
-          {["home","about","services","team","gallery","contact"].map(s => (
+          {["home","about","services","team","contact"].map(s => (
             <a key={s} onClick={() => scrollTo(s)}>{s.charAt(0).toUpperCase()+s.slice(1)}</a>
           ))}
         </div>
@@ -662,18 +736,38 @@ export default function App() {
         <div className="va-container">
           <h2 className="va-section-title">Our Services</h2>
           <div className="va-section-line" />
+
+          {/* TAB BUTTONS */}
           <div className="va-service-tabs">
             {SERVICES.map((svc, i) => (
-              <button key={i} className={`va-tab-btn${activeTab === i ? " active" : ""}`} onClick={() => setActiveTab(i)}>
-                <i className={svc.icon}></i> {svc.label}
+              <button
+                key={i}
+                className={`va-tab-btn${activeTab === i ? " active" : ""}`}
+                onClick={() => setActiveTab(i)}
+              >
+                <span className="va-tab-emoji">{svc.emoji}</span>
+                {svc.label}
               </button>
             ))}
           </div>
-          <div className="va-service-box">
-            <img src={SERVICES[activeTab].img} alt={SERVICES[activeTab].title} />
+
+          {/* CONTENT BOX — image left, list right */}
+          <div className="va-service-box" key={activeTab}>
+            <img
+              className="va-service-img"
+              src={SERVICES[activeTab].img}
+              alt={SERVICES[activeTab].title}
+            />
             <div>
               <h3>{SERVICES[activeTab].title}</h3>
-              <p>{SERVICES[activeTab].desc}</p>
+              <div className="va-service-subtitle">
+                {SERVICES[activeTab].items.length} Services Available
+              </div>
+              <ul className="va-service-list">
+                {SERVICES[activeTab].items.map((item, j) => (
+                  <li key={j}>{item}</li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
@@ -699,32 +793,6 @@ export default function App() {
                     <span className="va-accordion-icon">{openAcc === i ? "×" : "+"}</span>
                   </div>
                   <div className="va-accordion-body">{item.body}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── GALLERY / WORK SLIDER ── */}
-      <section id="gallery" className="va-section va-work-section">
-        <div className="va-container">
-          <h2 className="va-section-title">Our Work &amp; Team</h2>
-          <div className="va-section-line" />
-          <div className="va-work-slider">
-            <div className="va-work-track">
-              {/* Original set */}
-              {WORK_IMAGES.map((img, i) => (
-                <div key={`a${i}`} className="va-work-card">
-                  <img src={img.src} alt={img.alt}
-                    onError={e => { e.target.src=`https://picsum.photos/seed/err${i}/400/300`; }} />
-                </div>
-              ))}
-              {/* Duplicate for seamless loop */}
-              {WORK_IMAGES.map((img, i) => (
-                <div key={`b${i}`} className="va-work-card">
-                  <img src={img.src} alt={img.alt}
-                    onError={e => { e.target.src=`https://picsum.photos/seed/err${i}/400/300`; }} />
                 </div>
               ))}
             </div>
@@ -822,16 +890,23 @@ export default function App() {
               ) : (
                 <form onSubmit={handleSubmit}>
                   <div className="va-form-row">
-                    <input type="text" placeholder="Your Name" required
+                    <input
+                      type="text" name="name" placeholder="Your Name" required
                       value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} />
-                    <input type="tel" placeholder="Phone Number" required
+                    <input
+                      type="tel" name="phone" placeholder="Phone Number" required
                       value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} />
                   </div>
-                  <input type="email" placeholder="Your Email" required
+                  <input
+                    type="email" name="email" placeholder="Your Email" required
                     value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} />
-                  <textarea placeholder="Your Message" required
+                  <textarea
+                    name="message" placeholder="Your Message" required
                     value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})} />
-                  <button type="submit" className="va-form-btn">Send Message →</button>
+                  <button type="submit" className="va-form-btn" disabled={sending}
+                    style={{opacity: sending ? 0.75 : 1, cursor: sending ? "not-allowed" : "pointer"}}>
+                    {sending ? "⏳ Sending..." : "Send Message →"}
+                  </button>
                 </form>
               )}
             </div>
